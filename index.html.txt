@@ -1,0 +1,7 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Hello World</h1>
+<p>This ReichTUM page is hosted by Github.</p>
+</body>
+</html>
