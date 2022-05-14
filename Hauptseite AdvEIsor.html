@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="Hauptseite Style.css">
+        <!--<script type="text/javascript" src="Hauptseite JS.js"></script>-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <title>
+            
+        </title>        
+    </head>
+    
+    <body>
+        <!--Navigationsleiste mit Weiterleitung zu anderen Seiten -->
+        <ul class="menu">
+            <li><a href="#Hauptseite"><img id="logo" src="AdvEIsor Logo rund.png"> </a> </li>
+            <li><a href="#Verhandeln"><i class="fa-solid fa-arrow-right-arrow-left"></i> Verhandeln</a></li>
+            <li><a href="#Karte ziehen"><i class="fa-solid fa-question"></i> Karte ziehen</a></li>
+            <li><a href="#Straßen"><i class="fa-solid fa-road"></i> Straßen</a></li>
+            <li><a href="#Rekord"><i class="fa-solid fa-trophy"></i> Rekord</a></li>
+        </ul>
+        
+        <br>
+        <table width="100%">
+            <col style="width:60%">
+            <col style="width:40%">
+            <tr>
+                <td>
+                    <!-- Evtl. Spielbrett anzeigen; erstmal: leer -->
+                </td>
+                <td>
+                    <table>
+                        <col style="width:30%">
+                        <col style="width:30%">
+                        <col style="width:40%">
+                        <tr>
+                            <td>
+                                <!--Geldzähler Gegner kann noch verändert werden-->
+                                <div class="counter-container">
+                                    <i class="fa-solid fa-dollar-sign"></i>
+                                    <div class="counter-opponent"></div>
+                                </div>
+                            
+                                
+                            </td>
+                            <td>
+                                <!--Geldzähler kann noch verändert werden-->
+                                <div class="counter-container">
+                                    <i class="fa-solid fa-sack-dollar"></i>
+                                    <div class="counter"></div>
+                                </div>
+                            
+                                
+                            </td>
+                            <td>
+                                <!--Timer, der die Spielzeit anzeigt mit Mgl. zu pausieren-->
+                                <div class="time-container">
+                                    <i class="fa-solid fa-clock"></i>
+                                    <div id="count_up_timer">00:00:00</div>
+                                    <button class="button" id="break_count_up_timer" onclick="pause_timer()">Pause</button>
+                                    </div>
+                                </div>    
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <script src="Hauptseite JS.js"></script>
+        <script type = "text/javascript">
+            updateCounter_2(500, true);
+        </script>
+    </body>
+</html>
