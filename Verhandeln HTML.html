@@ -1,0 +1,322 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" type="text/css" href="Verhandeln CSS.css">
+<script src="Verhandeln JS.js"></script>
+</head>
+
+<body>
+
+ <!--Navigationsleiste mit Weiterleitung zu anderen Seiten -->
+ <ul class="menu">
+    <li><a href="Hauptseite AdvEIsor.html"><img id="logo" src="AdvEIsor Logo rund.png"> </a> </li>
+    <li><a href="Verhandeln HTML.html"><i class="fa-solid fa-arrow-right-arrow-left"></i> Verhandeln</a></li>
+    <li><a href="#Karte ziehen"><i class="fa-solid fa-question"></i> Karte ziehen</a></li>
+    <li><a href="Verhandeln HTML.html"><i class="fa-solid fa-road"></i> Straßen</a></li>
+    <li><a href="#Rekord"><i class="fa-solid fa-trophy"></i> Rekord</a></li>
+    <li style="float:right;"><a href="#Logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a></li>
+</ul>
+
+<br><br>
+
+<!--Kartentabellen-->
+<table style="width:100%;" >
+    <tr>
+        <td style="text-align:left;">Spieler 1
+            <div style="max-height: 400px; overflow-y: scroll;">
+                <table style="text-align:center;">
+                    <tr>
+                        <td>
+                            <div id="street_field_1" ondrop="drop_to_street_field(event)" ondragover="allowDrop(event)" style="width:120px; height:160px;">
+                                <img src="Nordbahnhof.png" draggable="true" ondragstart="drag(event)" id="street_1"  width="120" height="160">
+                            </div>
+                        </td>
+                        <td >
+                            <div id="street_field_2" ondrop="drop_to_street_field(event)" ondragover="allowDrop(event)" style="width:120px; height:160px;">
+                                <img src="Elektrizitätswerk.png" draggable="true" ondragstart="drag(event)" id="street_2" width="120" height="160">
+                            </div>
+                        </td>
+                        <td>
+                            <div id="street_field_3" ondrop="drop_to_street_field(event)" ondragover="allowDrop(event)" style="width:150px; height:150px;">
+                                <img src="Ohmplatz.png" draggable="true" ondragstart="drag(event)" id="street_3" width="150" height="150">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div id="street_field_4" ondrop="drop_to_street_field(event)" ondragover="allowDrop(event)" style="width:120px; height:160px;">
+                                <img src="Nordbahnhof.png" draggable="true" ondragstart="drag(event)" id="street_4"  width="120" height="160">
+                            </div>
+                        </td>
+                        <td>
+                            <div id="street_field_5" ondrop="drop_to_street_field(event)" ondragover="allowDrop(event)" style="width:120px; height:160px;">
+                                <img src="Elektrizitätswerk.png" draggable="true" ondragstart="drag(event)" id="street_5" width="120" height="160">
+                            </div>
+                        </td>
+                        <td>
+                            <div id="street_field_6" ondrop="drop_to_street_field(event)" ondragover="allowDrop(event)" style="width:150px; height:150px;">
+                                <img src="Ohmplatz.png" draggable="true" ondragstart="drag(event)" id="street_6" width="150" height="150">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div id="street_field_7" ondrop="drop_to_street_field(event)" ondragover="allowDrop(event)" style="width:150px; height:150px;">
+                                <img src="Ohmplatz.png" draggable="true" ondragstart="drag(event)" id="street_7"  width="150" height="150">
+                            </div>
+                        </td>
+                        <td>
+                            <div id="street_field_8" ondrop="drop_to_street_field(event)" ondragover="allowDrop(event)" style="width:150px; height:150px;">
+                                <img src="Ohmplatz.png" draggable="true" ondragstart="drag(event)" id="street_8" width="150" height="150">
+                            </div>
+                        </td>
+                        <td>
+                            <div id="street_field_9" ondrop="drop_to_street_field(event)" ondragover="allowDrop(event)" style="width:150px; height:150px;">
+                                <img src="Ohmplatz.png" draggable="true" ondragstart="drag(event)" id="street_9" width="150" height="150">
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+        <td style="text-align:left;">Spieler 2
+            <div style="max-height: 400px; overflow-y: scroll;">
+                <table>
+                    <tr>
+                        <td style="height:5px">
+                            <div id="street_field_29" ondrop="drop_to_street_field(event)" ondragover="allowDrop(event)" style="width:120px; height:160px;">
+                                <img src="Nordbahnhof.png" draggable="true" ondragstart="drag(event)" id="street_29"  width="120" height="160">
+                            </div>
+                        </td>
+                        <td>
+                            <div id="street_field_30" ondrop="drop_to_street_field(event)" ondragover="allowDrop(event)" style="width:120px; height:160px;">
+                                <img src="Elektrizitätswerk.png" draggable="true" ondragstart="drag(event)" id="street_30" width="120" height="160">
+                            </div>
+                        </td>
+                        <td>
+                            <div id="street_field_31" ondrop="drop_to_street_field(event)" ondragover="allowDrop(event)" style="width:150px; height:150px;">
+                                <img src="Ohmplatz.png" draggable="true" ondragstart="drag(event)" id="street_31" width="150" height="150">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div id="street_field_32" ondrop="drop_to_street_field(event)" ondragover="allowDrop(event)" style="width:120px; height:160px;">
+                                <img src="Nordbahnhof.png" draggable="true" ondragstart="drag(event)" id="street_32"  width="120" height="160">
+                            </div>
+                        </td>
+                        <td>
+                            <div id="street_field_33" ondrop="drop_to_street_field(event)" ondragover="allowDrop(event)" style="width:120px; height:160px;">
+                                <img src="Elektrizitätswerk.png" draggable="true" ondragstart="drag(event)" id="street_33" width="120" height="160">
+                            </div>
+                        </td>
+                        <td>
+                            <div id="street_field_34" ondrop="drop_to_street_field(event)" ondragover="allowDrop(event)" style="width:150px; height:150px;">
+                                <img src="Ohmplatz.png" draggable="true" ondragstart="drag(event)" id="street_34" width="150" height="150">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div id="street_field_35" ondrop="drop_to_street_field(event)" ondragover="allowDrop(event)" style="width:150px; height:150px;">
+                                <img src="Ohmplatz.png" draggable="true" ondragstart="drag(event)" id="street_35"  width="150" height="150">
+                            </div>
+                        </td>
+                        <td>
+                            <div id="street_field_36" ondrop="drop_to_street_field(event)" ondragover="allowDrop(event)" style="width:150px; height:150px;">
+                                <img src="Ohmplatz.png" draggable="true" ondragstart="drag(event)" id="street_36" width="150" height="150">
+                            </div>
+                        </td>
+                        <td>
+                            <div id="street_field_37" ondrop="drop_to_street_field(event)" ondragover="allowDrop(event)" style="width:150px; height:150px;">
+                                <img src="Ohmplatz.png" draggable="true" ondragstart="drag(event)" id="street_37" width="150" height="150">
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+        <td style="text-align:left;">Freie Straßen
+            <div style="max-height: 400px; overflow-y: scroll;">
+                <table>
+                    <tr>
+                        <td>
+                            <div id="street_field_57" ondrop="drop_to_street_field(event)" ondragover="allowDrop(event)" style="width:120px; height:160px;">
+                                <img src="Nordbahnhof.png" draggable="true" ondragstart="drag(event)" id="street_57"  width="120" height="160">
+                            </div>
+                        </td>
+                        <td>
+                            <div id="street_field_58" ondrop="drop_to_street_field(event)" ondragover="allowDrop(event)" style="width:120px; height:160px;">
+                                <img src="Elektrizitätswerk.png" draggable="true" ondragstart="drag(event)" id="street_58" width="120" height="160">
+                            </div>
+                        </td>
+                        <td>
+                            <div id="street_field_59" ondrop="drop_to_street_field(event)" ondragover="allowDrop(event)" style="width:150px; height:150px;">
+                                <img src="Ohmplatz.png" draggable="true" ondragstart="drag(event)" id="street_59" width="150" height="150">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div id="street_field_60" ondrop="drop_to_street_field(event)" ondragover="allowDrop(event)" style="width:120px; height:160px;">
+                                <img src="Nordbahnhof.png" draggable="true" ondragstart="drag(event)" id="street_60"  width="120" height="160">
+                            </div>
+                        </td>
+                        <td>
+                            <div id="street_field_61" ondrop="drop_to_street_field(event)" ondragover="allowDrop(event)" style="width:120px; height:160px;">
+                                <img src="Elektrizitätswerk.png" draggable="true" ondragstart="drag(event)" id="street_61" width="120" height="160">
+                            </div>
+                        </td>
+                        <td>
+                            <div id="street_field_62" ondrop="drop_to_street_field(event)" ondragover="allowDrop(event)" style="width:150px; height:150px;">
+                                <img src="Ohmplatz.png" draggable="true" ondragstart="drag(event)" id="street_62" width="150" height="150">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div id="street_field_63" ondrop="drop_to_street_field(event)" ondragover="allowDrop(event)" style="width:150px; height:150px;">
+                                <img src="Ohmplatz.png" draggable="true" ondragstart="drag(event)" id="street_63"  width="150" height="150">
+                            </div>
+                        </td>
+                        <td>
+                            <div id="street_field_64" ondrop="drop_to_street_field(event)" ondragover="allowDrop(event)" style="width:150px; height:150px;">
+                                <img src="Ohmplatz.png" draggable="true" ondragstart="drag(event)" id="street_64" width="150" height="150">
+                            </div>
+                        </td>
+                        <td>
+                            <div id="street_field_65" ondrop="drop_to_street_field(event)" ondragover="allowDrop(event)" style="width:150px; height:150px;">
+                                <img src="Ohmplatz.png" draggable="true" ondragstart="drag(event)" id="street_65" width="150" height="150">
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<div style="display: none;" id="storage"></div>
+
+
+<!--Angebote-->
+
+<div id="angebote" style="display: inline;">
+    <table style="width: 100%; height: 100%;">
+        <col width="90%">
+        <col width="10%">
+        <tr>
+            <td style="vertical-align: top;">
+                <p style="text-align:left; margin-top: 0;">Angebote
+                    
+                
+                <div id="angebote_drop" ondrop="drop_to_angebote_field(event)" ondragover="allowDrop(event)"></div>
+                </p>
+            </td>
+            <td style="vertical-align: top;">
+                <button style="float: right;" class="money" onclick="show_range_shifter_angebote()">
+                    <i class="fa-solid fa-comment-dollar"></i>
+                </button>
+                <div style="display: none;" class="slidecontainer" id="shifter_angebote">
+                    <form action="/action_page.php">
+                        <label for="quantity">Betrag:</label>
+                        <input type="number" id="quantity_angebote" name="quantity_angebote" min="1" max="7500" oninput="update_quantity_angebote()">
+                    </form>
+                    <input type="range" min="1" max="7500" value="1" class="slider" id="shifter_input_angebote" oninput="update_value_angebote()">
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<!--Wünsche-->
+<div id="wuensche" style="display: inline;">
+    <table style="width: 100%; height: 100%;">
+        <col width="90%">
+        <col width="10%">
+        <tr>
+            <td style="vertical-align:top;">
+                <p style="text-align:left; margin-top:0;">Wünsche
+                    <div id="wuensche_drop" ondrop="drop_to_wuensche_field(event)" ondragover="allowDrop(event)"></div>
+                </p>
+            </td>
+            <td style="vertical-align:top;">
+                <button style="float:right;" class="money"  onclick="show_range_shifter_wuensche()">
+                    <i class="fa-solid fa-comment-dollar"></i>
+                </button>
+                <div style="display: none;" class="slidecontainer" id="shifter_wuensche">
+                    <form action="/action_page.php">
+                        <label for="quantity">Betrag:</label>
+                        <input type="number" id="quantity_wuensche" name="quantity_wuensche" min="1" max="7500" oninput="update_quantity_wuensche()">
+                    </form>
+                    <input type="range" min="1" max="7500" value="1" class="slider" id="shifter_input_wuensche" oninput="update_value_wuensche()">
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+
+<!-- Wuensche Offer -->
+<div id="show_offer_wuensche" style="display: none;">
+    <table style="width: 100%; height: 100%;">
+        <col width="90%">
+        <col width="10%">
+        <tr>
+            <td style="vertical-align:top;">
+                <p style="text-align:left; margin-top:0;">Wünsche (Offer)
+                    <div id="offer_wuensche_streets"></div>
+                </p>
+            </td>
+            <td style="vertical-align:top;">
+                <i class="fa-solid fa-comment-dollar"></i>
+                <p style="float:right;" id="offer_wuensche_value">
+                    300$
+                </p>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<!-- Angebote Offer -->
+<div id="show_offer_angebote" style="display: none;">
+    <table style="width: 100%; height: 100%;">
+        <col width="90%">
+        <col width="10%">
+        <tr>
+            <td style="vertical-align:top;">
+                <p style="text-align:left; margin-top:0;">Angebote (Offer)
+                    <div id="offer_angebote_streets"></div>
+                </p>
+            </td>
+            <td style="vertical-align:top;">
+                <i class="fa-solid fa-comment-dollar"></i>
+                <p style="float:right;" id="offer_angebote_value">
+                    300$
+                </p>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+<!--Submitbutton-->
+<input id="submit_offer" style="display: inline;" type="submit" value="Submit" onclick="submit_trading_offer()" style="margin-top:400px;">
+
+<!--Annehmen/Ablehnen-->
+<div style="margin-top:200px">
+    <form action="backend.php" style="display: none;" id="trading_offer_decision">
+        <input type="radio" id="trading_offer_accept" name="trading_offer_buttons" value="Annehmen">
+        <label for="Annehmen">Annehmen</label><br>
+        <input type="radio" id="trading_offer_decline" name="trading_offer_buttons" value="Ablehnen">
+        <label for="Ablehnen">Ablehnen</label>
+        <button type="submit" onclick="submit_offer_decision()">Senden</button>
+    </form>
+</div>
+
+
+
+</body>
+</html>
