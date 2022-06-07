@@ -4,11 +4,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" type="text/css" href="Verhandeln CSS.css">
 <script src="Verhandeln JS.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
 
- <!--Navigationsleiste mit Weiterleitung zu anderen Seiten -->
+ <!--Navigationsleiste mit Weiterleitung zu anderen Seiten-->
  <ul class="menu">
     <li><a href="Hauptseite AdvEIsor.html"><img id="logo" src="AdvEIsor Logo rund.png"> </a> </li>
     <li><a href="Verhandeln HTML.html"><i class="fa-solid fa-arrow-right-arrow-left"></i> Verhandeln</a></li>
@@ -20,7 +21,7 @@
 
 <br><br>
 
-<!--Kartentabellen-->
+<!--Anzeige der Karten und Möglichkeit in entsprechende Wunsch-/Angebot-Felder hineinzudraggen/-droppen-->
 <table style="width:100%;" >
     <tr>
         <td style="text-align:left;">Spieler 1
@@ -471,7 +472,7 @@
 <div style="display: none;" id="storage"></div>
 
 
-<!--Angebote-->
+<!--Drop-Feld, um Angebote hineinzuziehen und Geldbetrag einzustellen-->
 <div id="angebote" style="display: inline;">
     <table style="width: 100%; height: 100%;">
         <col width="90%">
@@ -500,7 +501,7 @@
     </table>
 </div>
 
-<!--Wünsche-->
+<!--Drop-Feld, um Wünsche hineinzuziehen und Geldbetrag einzustellen-->
 <div id="wuensche" style="display: inline;">
     <table style="width: 100%; height: 100%;">
             <col width="90%">
@@ -528,11 +529,11 @@
     </div> 
 </div>
 
-<!--Submitbutton-->
+<!--Submitbutton, um seine Angebote an Alex zu übermitteln-->
 <input id="submit_offer" style="display: inline;" type="submit" value="Submit" onclick="submit_trading_offer()" style="margin-top:400px;">
 
 <div id="overlay"> 
-    <!-- Angebote Offer -->
+    <!-- Wird als Angebotefeld angezeigt, wenn das Angebot beim Gegner ankommt -->
     <div id="show_offer_angebote" style="display: none;">
         <table style="width: 100%; height: 100%;">
             <col width="90%">
@@ -551,7 +552,7 @@
         </table>
     </div>
 
-    <!-- Wuensche Offer -->
+    <!-- Wird als Wünschefeld angezeigt, wenn das Angebot beim Gegner ankommt -->
     <div id="show_offer_wuensche" style="display: none;">
         <table style="width: 100%; height: 100%;">
             <col width="90%">
@@ -572,7 +573,7 @@
 
 
 
-    <!--Annehmen/Ablehnen-->
+    <!--Bietet Gegner Option Angebot anzunehmen oder abzulehnen-->
     <div id="decision">
         <form action="backend.php" style="display: none;" id="trading_offer_decision">
             <input type="radio" id="trading_offer_accept" name="trading_offer_buttons" value="Annehmen">
@@ -584,6 +585,11 @@
     </div>
 </div>
 
+<!--Zeigt dem Angebotsteller an, ob sein Angebot vom Gegner akzeptiert oder abgelehnt wurde; verschwindet nach 10s wieder-->
+<div id="show_acception" style="display: none;">
+    <p id="timer_status_accept">10 s</p>
+    <b id="decision_variable"></b>
+</div>
 
 
 </body>

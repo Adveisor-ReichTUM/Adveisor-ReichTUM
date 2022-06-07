@@ -129,5 +129,12 @@ li a:hover {
 }
 
 #show_acception, #show_decline {
-
+    float: right;
+    vertical-align: bottom;
+    border-radius: 5px;
+    height: 100px;
+    width: 300px;
+    border: 3px solid black;
+    text-align: center;
+    justify-content: center;
 }

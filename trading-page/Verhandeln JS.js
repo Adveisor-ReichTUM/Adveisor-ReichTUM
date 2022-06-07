@@ -13,19 +13,23 @@ value_angebote = 0;
 var streets_wuensche = [];
 var streets_angebote = [];
 
+//Player Id muss durch Aufruf festgelegt werden
 function set_player_id(id) {
     playerID = id;
 }
 
+//Notwendig für Drag&Drop
 function allowDrop(ev) {
     ev.preventDefault();
 }
 
+//Notwendig für Drag&Drop
 function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id);
     ev.dataTransfer.setData("parent", document.getElementById(ev.target.id).parentElement.id);
 }
 
+//von gegnerischen Karten zu Wünsche ziehen
 function drop_to_wuensche_field(ev) {
     ev.preventDefault();
     var street_id = ev.dataTransfer.getData("text");
@@ -36,6 +40,7 @@ function drop_to_wuensche_field(ev) {
     }
 }
 
+//von eigenen Karten zu Angeboten ziehen
 function drop_to_angebote_field(ev) {
     ev.preventDefault();
     var street_id = ev.dataTransfer.getData("text");
@@ -46,6 +51,7 @@ function drop_to_angebote_field(ev) {
     }
 }
 
+//Aus Angebot-/Wunschfeld zurück zu entsprechendem Spielerfeld draggen & droppen
 function drop_to_street_field(ev) {
     ev.preventDefault();
     var street_id = ev.dataTransfer.getData("text");
@@ -63,6 +69,7 @@ function drop_to_street_field(ev) {
     }
 }
 
+//Zeigt Geldschieber für Wünsche
 function show_range_shifter_wuensche() {
     if(showing_selector_wuensche) {
         document.getElementById("shifter_wuensche").style.display = "none";
@@ -74,6 +81,7 @@ function show_range_shifter_wuensche() {
     showing_selector_wuensche = !showing_selector_wuensche;
 }
 
+//Zeigt Geldschieber für Angebote
 function show_range_shifter_angebote() {
     if(showing_selector_angebote) {
         document.getElementById("shifter_angebote").style.display = "none";
@@ -85,39 +93,45 @@ function show_range_shifter_angebote() {
     showing_selector_angebote = !showing_selector_angebote;
 }
 
+//Synchronisiert Geldwert, wenn Schieber eingestellt wird bei Wünschen
 function update_value_wuensche() {
     value_wuensche = document.getElementById("shifter_input_wuensche").value;
     document.getElementById("quantity_wuensche").value = value_wuensche;
 }
 
+//Synchronisiert Geldwert, wenn Schieber eingestellt wird bei Angeboten
 function update_value_angebote() {
     value_angebote = document.getElementById("shifter_input_angebote").value;
     document.getElementById("quantity_angebote").value = value_angebote;
 }
 
+//Synchronisiert Schieber, wenn Geldwert eingestellt wird bei Wünschen
 function update_quantity_wuensche() {
     value_wuensche = document.getElementById("quantity_wuensche").value;
     document.getElementById("shifter_input_wuensche").value = value_wuensche;
 }
 
+//Synchronisiert Schieber, wenn Geldwert eingestellt wird bei Angeboten
 function update_quantity_angebote() {
     value_angebote = document.getElementById("quantity_angebote").value;
     document.getElementById("shifter_input_angebote").value = value_angebote;
 }
 
-function reset_value_angebote() {
-    value_angebote = 0;
-    document.getElementById("shifter_input_angebote").value = value_angebote;
-    document.getElementById("quantity_angebote").value = value_angebote;
-}
-
+//Setzt Wünsche-Regler und -Geldwert zurück auf 0
 function reset_value_wuensche() {
     value_wuensche = 0;
     document.getElementById("shifter_input_wuensche").value = value_wuensche;
     document.getElementById("quantity_wuensche").value = value_wuensche;
 }
 
+//Setzt Angebote-Regler und -Geldwert zurück auf 0
+function reset_value_angebote() {
+    value_angebote = 0;
+    document.getElementById("shifter_input_angebote").value = value_angebote;
+    document.getElementById("quantity_angebote").value = value_angebote;
+}
 
+//Nur Karten des Gegners dürfen in Wünsche gedroppt werden
 function access_streets_wuensche(street_id) {
     streets_field = parseInt(street_id.split("_")[2]);
     if(streets_field > 28 && streets_field <= 56) {
@@ -126,6 +140,7 @@ function access_streets_wuensche(street_id) {
     return false;
 }
 
+//Nur eigene Karten dürfen in Wünsche gedroppt werden
 function access_streets_angebote(street_field_id) {
     streets_field = parseInt(street_field_id.split("_")[2]);
     if(streets_field <= 28) {
@@ -134,6 +149,7 @@ function access_streets_angebote(street_field_id) {
     return false;
 }
 
+//Karten dürfen nur dahin zurückgezogen werden, wo sie herkommen
 function access_streets_field(container_field_id, street_field_id) {
     id = parseInt(street_field_id.split("_")[2]);
     if(container_field_id == "angebote_drop" && id <= 28) {
@@ -167,11 +183,13 @@ function remove_streets_angebote(element) {
     }
 }
 
+//test
 /*function submit_trading_offer() {
     trade(streets_angebote, streets_wuensche, value_angebote, value_wuensche, playerID);
 }*/
 
-/// Diese Funktion bekommt als Eingabe List<String>, wobei jeder String die ID einer Straße repräsentiert
+// Diese Funktion bekommt als Eingabe List<String>, wobei jeder String die ID einer Straße repräsentiert
+//Zeigt Gegner Verhandlungsangebot mit Geldwert und Straßen
 function show_offer(value_angebote, streets_angebote, value_wuensche, streets_wuensche) {
     document.getElementById("show_offer_angebote").style.display = "inline";
     document.getElementById("show_offer_wuensche").style.display = "inline";
@@ -194,6 +212,7 @@ function show_offer(value_angebote, streets_angebote, value_wuensche, streets_wu
     document.getElementById("offer_angebote_value").innerHTML = value_angebote + " Ω";
 }
 
+//Gegner kann annehmen oder ablehnen
 function submit_offer_decision() {
     answer = document.querySelector('input[name="trading_offer_buttons"]:checked').value;
     if(answer == "Annehmen") {
@@ -207,20 +226,17 @@ function submit_offer_decision() {
     document.getElementById("overlay").style.display = "none";
 }
 
-//Diese Funktion soll Alex für den Spieler aufrufen, der das Angebot gemacht hat, bevor er den Screen updated
+//Diese Funktion soll Alex für den Spieler aufrufen, der das Angebot gemacht hat, bevor er den Screen updated, decision ist bool
+//zeigt einem Entscheidung des Gegners
 function show_opponent_decision(decision) {
-    if(decision) {
-        alert("Der Gegner hat Dein Angebot angenommen");
-    }
-    else {
-        alert("Der Gegner hat Dein Angebot abgelehnt");
-    }
+    show_acception_alert(decision);
 }
 
 
 
 //Alex ruft diese Methode auf, wenn ein Angebot angenommen wurde, oder wenn eine neue Straße gekauft wurde
 // my_cards, opponent_cards, free_cards: List<String> mit IDs
+//Ordnet alle Karten dem korrekten Tabellenplatz zu
 function update_streets_on_screen(my_cards, opponent_cards, free_cards) {
     document.getElementById("show_offer_angebote").style.display = "none";
     document.getElementById("show_offer_wuensche").style.display = "none";
@@ -239,15 +255,6 @@ function update_streets_on_screen(my_cards, opponent_cards, free_cards) {
 
         }
     }
-    /*for(var i = 1; i < 85; i++) {
-        var id = "street_field_" + i;
-        try {
-            document.getElementById("street_field_" + i).innerHTML = "";
-        }
-        catch(e) {
-            //alert(e);
-        }
-    }*/
     for(var i = 0; i < my_cards.length; i++) {
         document.getElementById("street_field_" + (i + 1)).appendChild(document.getElementById(my_cards[i]));
     }
@@ -259,7 +266,8 @@ function update_streets_on_screen(my_cards, opponent_cards, free_cards) {
     }
 }
 
-function submit_trading_offer() {
+//test
+/*function submit_trading_offer() {
     angebote = ["street_1", "street_2", "street_4"];
     wuensche = ["street_14", "street_24", "street_21"];
     angebote_value = 200;
@@ -267,13 +275,15 @@ function submit_trading_offer() {
     show_offer(value_angebote, angebote, value_wuensche, wuensche);
 }
 
-/*function submit_trading_offer() {
+//test
+function submit_trading_offer() {
     my_cards_test = ["street_1", "street_2", "street_3"];
     opponent_cards_test = ["street_31", "street_32", "street_33"];
     free_cards_test = ["street_59", "street_60", "street_61"];
     update_streets_on_screen(my_cards_test, opponent_cards_test, free_cards_test);
 }*/
 
+//Zeigt an, wenn Straße mit Hypothek belastet ist
 function show_mortgage(id) {
     //ändere Durchsichtigkeit
     street_id = "street_" + id; //wenn als Integer übergeben wird
@@ -285,6 +295,7 @@ function show_mortgage(id) {
     document.getElementById(street_id).setAttribute('draggable', false);
 }
 
+//Löst Hypothekansicht wieder auf
 function end_mortgage(id) {
     //ändere Durchsichtigkeit
     street_id = "street_" + id; //wenn als Integer übergeben wird
@@ -295,11 +306,42 @@ function end_mortgage(id) {
     //schalte draggable ein
     document.getElementById(street_id).setAttribute('draggable', true);
 }
-
+//test
 /*function submit_trading_offer() {
-    show_mortgage(1);
+    hide_decline();
+ }*/
+
+//test
+/*function end_the_mortgage() {
+    end_mortgage(1);
+}*/
+
+//Zeigt 10 Sekunden, ob Angebot vom Gegner angenomen oder abgelehnt wurde, danach verschwindet es wieder
+function show_acception_alert(decision) {
+    $(document).ready(function hide_acception(){
+        var counter = 10;
+        var timer_status_accept = setInterval(function(){
+            document.getElementById("show_acception").style.display = "inline";
+            counter--;
+            if(counter > 0 && decision){
+                document.getElementById("decision_variable").innerHTML = "Das Angebot wurde angenommen.";
+                var msg = + counter + ' s'
+                    $('#timer_status_accept').text(msg);
+            }
+            else if(counter > 0 && !decision){
+                document.getElementById("decision_variable").innerHTML = "Das Angebot wurde abgelehnt.";
+                var msg = + counter + ' s'
+                    $('#timer_status_accept').text(msg);
+            }
+            else{
+                    //$('#time_status').text('hide successfully after 10 seconds');
+                    $('#show_acception').hide();
+                    clearInterval(timer_status_accept);
+            }
+        }, 1000);
+    });
 }
 
-function end_the_mortgage() {
-    end_mortgage(1);
+/*function submit_trading_offer(){
+    show_opponent_decision(false);
 }*/
