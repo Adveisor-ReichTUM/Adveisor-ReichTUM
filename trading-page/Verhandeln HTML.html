@@ -1,7 +1,6 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" type="text/css" href="Verhandeln CSS.css">
 <script src="Verhandeln JS.js"></script>
@@ -25,7 +24,7 @@
 <!--Anzeige der Karten und Möglichkeit in entsprechende Wunsch-/Angebot-Felder hineinzudraggen/-droppen-->
 <table style="width:100%;" >
     <tr>
-        <td style="text-align:left;">Spieler 1
+        <td style="text-align:left;" id="own_username">Spieler 1
             <div style="max-height: 400px; overflow-y: scroll;">
                 <table style="text-align:center;">
                     <tr>
@@ -166,7 +165,7 @@
                 </table>
             </div>
         </td>
-        <td style="text-align:left;">Spieler 2
+        <td style="text-align:left;" id="opponent_username">Spieler 2
             <div style="max-height: 400px; overflow-y: scroll;">
                 <table>
                     <tr>
@@ -431,7 +430,7 @@
                         </td>
                         <td>
                             <div id="street_field_79" ondrop="drop_to_street_field(event)" ondragover="allowDrop(event)" style="width:120px; height:160px;">
-                                <img src="Kirchhoffsche Moschee.png" draggable="true" ondragstart="drag(event)" id="street_23" width="120" height="160">
+                                <img src="Kirchoffsche Moschee.png" draggable="true" ondragstart="drag(event)" id="street_23" width="120" height="160">
                             </div>
                         </td>
                         <td>
@@ -495,7 +494,7 @@
                         <label for="quantity">Betrag:</label>
                         <input type="number" id="quantity_angebote" name="quantity_angebote" min="0" max="7500" oninput="update_quantity_angebote()">
                     </form>
-                    <input type="range" min="0" max="7500" value="0" class="slider" id="shifter_input_angebote" oninput="update_value_angebote()">
+                    <input type="range" min="0" max="7500" value="1" class="slider" id="shifter_input_angebote" oninput="update_value_angebote()">
                 </div>
             </td>
         </tr>
@@ -522,7 +521,7 @@
                             <label for="quantity">Betrag:</label>
                             <input type="number" id="quantity_wuensche" name="quantity_wuensche" min="0" max="7500" oninput="update_quantity_wuensche()">
                         </form>
-                        <input type="range" min="0" max="7500" value="0" class="slider" id="shifter_input_wuensche" oninput="update_value_wuensche()">
+                        <input type="range" min="0" max="7500" value="1" class="slider" id="shifter_input_wuensche" oninput="update_value_wuensche()">
                     </div>
                 </td>
             </tr>
@@ -572,8 +571,6 @@
         </table>
     </div>
 
-
-
     <!--Bietet Gegner Option Angebot anzunehmen oder abzulehnen-->
     <div id="decision">
         <form action="backend.php" style="display: none;" id="trading_offer_decision">
@@ -591,6 +588,31 @@
     <p id="timer_status_accept">10 s</p>
     <b id="decision_variable"></b>
 </div>
+
+
+
+
+<!-- Trigger/Open The Modal -->
+<button id="myBtn" onclick="open_modal()">Open Modal</button>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>Achtung!</h2>
+    </div>
+    <div class="modal-body">
+      <p>Player 1,</p>
+      <p>Du bist am Zug!</p>
+    </div>
+  </div>
+
+</div>
+
+
 
 
 </body>
