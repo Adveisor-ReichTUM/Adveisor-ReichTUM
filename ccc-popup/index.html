@@ -11,7 +11,7 @@
 <body>
 
     <!-- Open The Popup -->
-    <button id="myBtn">Karte ziehen</button>
+    <button id="myBtn" onclick="random(); getRandomCard();">Karte ziehen</button>
 
     <!-- The Popup -->
     <div id="myModal" class="modal">
@@ -24,11 +24,9 @@
                 <button class="card">
                   <div class="card-inner">
                     <div class="card-front">
-                      <h2 class="card-title">Ereigniskarte</h2>
+                      <img alt="Ereigniskarte" src="images/Ereigniskarte_Rückseite.jpeg">
                     </div>
-                    <div class="card-back">
-                      <h3>Ereigniskarte</h3> 
-                      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p> 
+                    <div class="card-back" id="randomChanceCard">
                     </div>
                   </div>
                 </button>
@@ -39,11 +37,9 @@
                 <button class="card">
                   <div class="card-inner">
                     <div class="card-front">
-                      <h2 class="card-title">Gemeinschaftskarte</h2>
+                      <img alt="Gemeinschaftskarte" src="images/Gemeinschaftskarte_Rückseite.jpeg">
                     </div>
-                    <div class="card-back">
-                      <h3>Gemeinschaftskarte</h3> 
-                      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p> 
+                    <div class="card-back" id="randomCommunityChestCard"> 
                     </div>
                   </div>
                 </button>
