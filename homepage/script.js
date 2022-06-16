@@ -1,3 +1,8 @@
+chance_cards=[4,3,2];
+community_cards=[3,2,2];
+chance_index = 0;
+community_index = 0;
+
 //globale Variablen für countUpTimer()
 var timerVariable = setInterval(function() {
     if(!isPaused) {
@@ -82,4 +87,73 @@ function updateCounter_2(new_counter_value, is_opponent) {
         };
         updateCounter();
     });
+}
+
+//Integer-Liste mit Indices der gemischten Ereigniskarten
+function set_chance_order(chance_cards_merged) {
+    chance_cards = chance_cards_merged;
+}
+
+//Integer-Liste mit Indices der gemischten Gemeinschaftskarten
+function set_community_order(community_cards_merged) {
+    community_cards = community_cards_merged;
+}
+
+//ziehe verschiedene Ereigniskarten als Bild
+function show_chance_card() {
+    current_chance_card_id = chance_cards[chance_index];
+    //get image
+    source = "Ereigniskarte_" + current_chance_card_id + ".png";
+    //change index
+    chance_index = (chance_index + 1) % chance_cards.length;
+    //show image
+    window.location.href = './' + source;
+    //prison card
+    if(current_chance_card_id == prison_index) {
+        free_prison_chance_dragged();
+    }
+}
+
+//ziehe verschiedene Gemeinschaftskarten als Bild
+function show_community_card() {
+    current_community_card_id = community_cards[community_index];
+    //get image
+    source = "Gemeinschaftskarte_" + current_community_card_id + ".png";
+    //change index
+    community_index = (community_index + 1) % community_cards.length;
+    //show image
+    window.location.href = './' + source;
+    //prison card
+    if(current_community_card_id == prison_index) {
+        free_prison_community_dragged();
+    }
+
+}
+
+//Umgang mit Du kommst aus dem Gefängnis frei
+function free_prison_chance_dragged() {
+    document.getElementById("prison_chance_click").disabled = false;
+    document.getElementById("prison_chance_click").style.opacity = 1;
+}
+
+//Umgang mit Du kommst aus dem Gefängnis frei
+function free_prison_community_dragged() {
+    document.getElementById("prison_community_click").disabled = false;
+    document.getElementById("prison_community_click").style.opacity = 1;
+}
+
+function free_prison_community_button_clicked() {
+    if(/*free_prison_card_played()*/ true) {
+        document.getElementById("prison_community_click").disabled = true;
+        document.getElementById("prison_community_click").style.opacity = 0.5;
+    }
+    //backend: free_prison_card_played();
+}
+
+function free_prison_chance_button_clicked() {
+    if(/*free_prison_card_played()*/ true) {
+        document.getElementById("prison_chance_click").disabled = true;
+        document.getElementById("prison_chance_click").style.opacity = 0.5;
+    }
+    //backend: free_prison_card_played();
 }

@@ -73,7 +73,6 @@ function getRandomCard() {
       case 15: result.innerHTML="<img alt='Gemeinschaftskarte' src='images/Gemeinschaftskarte_15.jpeg'>"; break;
     }
   }
-  console.log(x);
 }
 
 btn.addEventListener('click', () => {
