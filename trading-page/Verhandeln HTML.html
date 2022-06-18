@@ -1,13 +1,18 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="stylesheet" type="text/css" href="Verhandeln CSS.css">
-<script src="Verhandeln JS.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReichTUM</title>
+    <link rel="shortcut icon" href="images/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="Verhandeln CSS.css">
+    <script src="Verhandeln JS.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
-<body>
+<body onload="document.getElementById('defaultOpen').click();">
 
  <!--Navigationsleiste mit Weiterleitung zu anderen Seiten-->
  <ul class="menu">
@@ -21,11 +26,19 @@
 
 <br><br>
 
-<!--Anzeige der Karten und Möglichkeit in entsprechende Wunsch-/Angebot-Felder hineinzudraggen/-droppen-->
-<table style="width:100%;" >
+<!--Anzeige der Karten-->
+<div class="leftcolumn">
+<div class="tab">
+    <button class="tablinks active" onclick="openTap(event, 'Spieler_1')" id="defaultOpen">Spieler 1</button>
+    <button class="tablinks" onclick="openTap(event, 'Spieler_2')">Spieler 2</button>
+    <button class="tablinks" onclick="openTap(event, 'Freie_Straßen')">Freie Straßen</button>
+</div>
+
+<!--Spieler 1-->
+<table id="Spieler_1" class="tabcontent">
     <tr>
-        <td style="text-align:left;" id="own_username">Spieler 1
-            <div style="max-height: 400px; overflow-y: scroll;">
+        <td style="text-align:left;" id="own_username">
+            <div style="max-height: 60vh; overflow-y: scroll;">
                 <table style="text-align:center;">
                     <tr>
                         <td>
@@ -165,8 +178,15 @@
                 </table>
             </div>
         </td>
-        <td style="text-align:left;" id="opponent_username">Spieler 2
-            <div style="max-height: 400px; overflow-y: scroll;">
+    </tr>
+</table>
+
+<!--Spieler 2-->
+<table id="Spieler_2" class="tabcontent">
+    <tr>
+
+        <td style="text-align:left;" id="opponent_username">
+            <div style="max-height: 60vh; overflow-y: scroll;">
                 <table>
                     <tr>
                         <td style="height:5px">
@@ -303,8 +323,14 @@
                 </table>
             </div>
         </td>
-        <td style="text-align:left;">Freie Straßen
-            <div style="max-height: 400px; overflow-y: scroll;">
+    </tr>
+</table>
+
+<!--Freie Straßen-->
+<table id="Freie_Straßen" class="tabcontent">
+    <tr>
+        <td style="text-align:left;">
+            <div style="max-height: 60vh;; overflow-y: scroll;">
                 <table>
                     <tr>
                         <td>
@@ -469,68 +495,75 @@
     </tr>
 </table>
 
-<div style="display: none;" id="storage"></div>
+<!--Submitbutton, um seine Angebote an Alex zu übermitteln-->
+<input id="submit_offer" style="display: inline;" type="submit" value="Submit" onclick="submit_trading_offer()" style="margin-top:400px;">
 
+<!-- Trigger/Open The Modal -->
+<button id="myBtn" onclick="open_modal()">Open Modal</button>
 
-<!--Drop-Feld, um Angebote hineinzuziehen und Geldbetrag einzustellen-->
-<div id="angebote" style="display: inline;">
-    <table style="width: 100%; height: 100%;">
-        <col width="90%">
-        <col width="10%">
-        <tr>
-            <td style="vertical-align: top;">
-                <p style="text-align:left; margin-top: 0;">Angebote
-                    
-                
-                <div id="angebote_drop" ondrop="drop_to_angebote_field(event)" ondragover="allowDrop(event)" style="display: flex; justify-content: space-evenly;"></div>
-                </p>
-            </td>
-            <td style="vertical-align: top;">
-                <button style="float: right;" class="money" onclick="show_range_shifter_angebote()">
-                    <i class="fa-solid fa-comment-dollar"></i>
-                </button>
-                <div style="display: none;" class="slidecontainer" id="shifter_angebote">
-                    <form action="/action_page.php">
-                        <label for="quantity">Betrag:</label>
-                        <input type="number" id="quantity_angebote" name="quantity_angebote" min="0" max="7500" oninput="update_quantity_angebote()">
-                    </form>
-                    <input type="range" min="0" max="7500" value="1" class="slider" id="shifter_input_angebote" oninput="update_value_angebote()">
-                </div>
-            </td>
-        </tr>
-    </table>
 </div>
 
-<!--Drop-Feld, um Wünsche hineinzuziehen und Geldbetrag einzustellen-->
-<div id="wuensche" style="display: inline;">
-    <table style="width: 100%; height: 100%;">
+<div style="display: none;" id="storage"></div>
+
+<!--Möglichkeit in entsprechende Wunsch-/Angebot-Felder hineinzudraggen/-droppen-->
+
+<div class="rightcolumn">
+    <!--Drop-Feld, um Angebote hineinzuziehen und Geldbetrag einzustellen-->
+    <div id="angebote" style="display: inline;">
+        <table style="width: 100%; height: 100%;">
             <col width="90%">
             <col width="10%">
             <tr>
-                <td style="vertical-align:top;">
-                    <p style="text-align:left; margin-top:0;">Wünsche
-                        <div id="wuensche_drop" ondrop="drop_to_wuensche_field(event)" ondragover="allowDrop(event)" style="display: flex; justify-content: space-evenly;"></div>
+                <td style="vertical-align: top;">
+                    <p style="font-size: 16px; text-align:left; margin-top: 0;">Angebote
+                        
+                    
+                    <div id="angebote_drop" ondrop="drop_to_angebote_field(event)" ondragover="allowDrop(event)" style="display: flex; justify-content: space-evenly;"></div>
                     </p>
                 </td>
-                <td style="vertical-align:top;">
-                    <button style="float:right;" class="money"  onclick="show_range_shifter_wuensche()">
+                <td style="vertical-align: top;">
+                    <button style="float: right;" class="money" onclick="show_range_shifter_angebote()">
                         <i class="fa-solid fa-comment-dollar"></i>
                     </button>
-                    <div style="display: none;" class="slidecontainer" id="shifter_wuensche">
+                    <div style="display: none;" class="slidecontainer" id="shifter_angebote">
                         <form action="/action_page.php">
                             <label for="quantity">Betrag:</label>
-                            <input type="number" id="quantity_wuensche" name="quantity_wuensche" min="0" max="7500" oninput="update_quantity_wuensche()">
+                            <input type="number" id="quantity_angebote" name="quantity_angebote" min="0" max="7500" oninput="update_quantity_angebote()">
                         </form>
-                        <input type="range" min="0" max="7500" value="1" class="slider" id="shifter_input_wuensche" oninput="update_value_wuensche()">
+                        <input type="range" min="0" max="7500" value="1" class="slider" id="shifter_input_angebote" oninput="update_value_angebote()">
                     </div>
                 </td>
             </tr>
         </table>
-    </div> 
+    </div>
+    <!--Drop-Feld, um Wünsche hineinzuziehen und Geldbetrag einzustellen-->
+    <div id="wuensche" style="display: inline;">
+        <table style="width: 100%; height: 100%;">
+                <col width="90%">
+                <col width="10%">
+                <tr>
+                    <td style="vertical-align:top;">
+                        <p style="font-size: 16px; text-align:left; margin-top:0;">Wünsche
+                            <div id="wuensche_drop" ondrop="drop_to_wuensche_field(event)" ondragover="allowDrop(event)" style="display: flex; justify-content: space-evenly;"></div>
+                        </p>
+                    </td>
+                    <td style="vertical-align:top;">
+                        <button style="float:right;" class="money"  onclick="show_range_shifter_wuensche()">
+                            <i class="fa-solid fa-comment-dollar"></i>
+                        </button>
+                        <div style="display: none;" class="slidecontainer" id="shifter_wuensche">
+                            <form action="/action_page.php">
+                                <label for="quantity">Betrag:</label>
+                                <input type="number" id="quantity_wuensche" name="quantity_wuensche" min="0" max="7500" oninput="update_quantity_wuensche()">
+                            </form>
+                            <input type="range" min="0" max="7500" value="1" class="slider" id="shifter_input_wuensche" oninput="update_value_wuensche()">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div> 
+    </div>
 </div>
-
-<!--Submitbutton, um seine Angebote an Alex zu übermitteln-->
-<input id="submit_offer" style="display: inline;" type="submit" value="Submit" onclick="submit_trading_offer()" style="margin-top:400px;">
 
 <div id="overlay"> 
     <!-- Wird als Angebotefeld angezeigt, wenn das Angebot beim Gegner ankommt -->
@@ -588,12 +621,6 @@
     <p id="timer_status_accept">10 s</p>
     <b id="decision_variable"></b>
 </div>
-
-
-
-
-<!-- Trigger/Open The Modal -->
-<button id="myBtn" onclick="open_modal()">Open Modal</button>
 
 <!-- The Modal -->
 <div id="myModal" class="modal">

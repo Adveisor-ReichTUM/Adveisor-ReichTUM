@@ -1,12 +1,76 @@
-#angebote, #wuensche {
+* {
+    box-sizing: border-box;
+}
+
+.leftcolumn {
     float: left;
-    width: 800px;
-    height: 200px;
-    margin: 10px;
+    width: 405px;
+    height: 80vh;
+    position: relative;
+}
+
+#myBtn {
+    position: absolute;
+    bottom: 0px;
+    left: 17px;
+    color: #ffffff;
+    background-color: #3170b3;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#submit_offer {
+    position: absolute;
+    bottom: 0px;
+    right: 17px;
+    color: #ffffff;
+    background-color: #3170b3;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.rightcolumn {
+    float: left;
+    width: 60%;
+    height: 80vh;
+    position: relative;
+    padding: 14px 28px;
+}
+
+#angebote {
+    position: absolute;
+    float: left;
+    width: 90%;
+    margin-left: 20px;
+    height: 45%;
+    top: 0px;
+    left: 0px;
     align-items: center;
     justify-content: center;
-    margin-left: 25px;
-    margin-top: 50px;
+    padding: 10px;
+    border: 0px solid black;
+    background-color: white;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 0 10px #999;
+    box-shadow: 0 0 10px #999;
+}
+
+#wuensche {
+    position: absolute;
+    float: left;
+    width: 90%;
+    margin-left: 20px;
+    height: 45%;
+    bottom: 0px;
+    left: 0px;
+    align-items: center;
+    justify-content: center;
     padding: 10px;
     border: 0px solid black;
     background-color: white;
@@ -18,7 +82,7 @@
 #show_offer_wuensche, #show_offer_angebote {
     float: left;
     width: 800px;
-    height: 200px;
+    height: 220px;
     margin: 10px;
     align-items: center;
     justify-content: center;
@@ -33,7 +97,7 @@
 }
 
 #angebote_drop, #wuensche_drop, #offer_angebote_streets, #offer_wuensche_streets {
-    width: 630px;
+    width: 110%;
     height: 180px;
 }
 
@@ -204,4 +268,46 @@ li a:hover {
   }
   
   .modal-body {padding: 2px 16px;}
+
+  /*NEU*/
+
+  /* Style the tab */
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #999;
+    background-color: #ffffff;
+    width: 405px;
+  }
+  
+  /* Style the buttons inside the tab */
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: #ddd;
+  }
+  
+  /* Create an active/current tablink class */
+  .tab button.active {
+    background-color: #ccc;
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: none;
+    width: 405px;
+  }
   
