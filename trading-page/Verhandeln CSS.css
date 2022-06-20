@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .leftcolumn {
@@ -80,20 +81,17 @@
 }
 
 #show_offer_wuensche, #show_offer_angebote {
-    float: left;
-    width: 800px;
-    height: 220px;
-    margin: 10px;
-    align-items: center;
-    justify-content: center;
-    margin-left: 25px;
-    margin-top: 50px;
-    padding: 10px;
-    border: 0px solid black;
-    background-color: white;
-    border-radius: 5px;
-    -webkit-box-shadow: 0 0 10px #999;
-    box-shadow: 0 0 10px #999;
+  width: 100%;
+  height: 220px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  padding: 10px;
+  border: 0px solid black;
+  background-color: white;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 10px #999;
+  box-shadow: 0 0 10px #999;
 }
 
 #angebote_drop, #wuensche_drop, #offer_angebote_streets, #offer_wuensche_streets {
@@ -174,22 +172,49 @@ li a:hover {
 }
 
 #overlay {
-    position: fixed;
-    display: none;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0,0,0,0.5);
-    z-index: 2;
-    cursor: pointer;
-  }
+  position: fixed;
+  display: block;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+}
+
+#overlay-inner {
+  position: relative;
+  margin-top: 20px;
+  margin-left:20%;
+  margin-right:20%;
+}
 
 #decision {
-    margin-top: 500px; 
-    border-radius: 5px; 
+  position: relative;
+  width: 250px;
+  height: 45px;
+  margin-top: 30px;
+  padding-top: 2px;
+  padding-left: 10px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+#decision_button {
+  position:absolute;
+  height: 45px;
+  padding: 10px 28px;
+  right: 0px;
+  bottom: 0px;
+  font-size: 16px;
+  border: none;
+  color: white;
+  background-color: #3170b3;
+  cursor: pointer;
+  box-shadow: 0 0 10px #999;
 }
 
 #show_acception, #show_decline {
@@ -268,8 +293,6 @@ li a:hover {
   }
   
   .modal-body {padding: 2px 16px;}
-
-  /*NEU*/
 
   /* Style the tab */
 .tab {
